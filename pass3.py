@@ -467,8 +467,8 @@ def main():
     fuse_options.add('fsname=passthroughfs')
     
     fuse_options.add('allow_other')
-    fuse_options.add('uid=$MYUID')
-    fuse_options.add('gid=$MYGID')
+    fuse_options.add('uid=1000000')
+    fuse_options.add('gid=1001000')
     
     if options.debug_fuse:
         fuse_options.add('debug')
