@@ -460,13 +460,18 @@ def main():
     init_logging(options.debug)
     operations = Operations(options.source)
 	
-    fuse_options.add('allow_other')
+    
 	
     log.debug('Mounting...')
     fuse_options = set(pyfuse3.default_options)
     fuse_options.add('fsname=passthroughfs')
+    
+    fuse_options.add('allow_other')
+    
     if options.debug_fuse:
         fuse_options.add('debug')
+        
+        
     fuse_options.discard('default_permissions') 
     pyfuse3.init(operations, options.mountpoint, fuse_options)
 
