@@ -467,14 +467,14 @@ def main():
     fuse_options.add('fsname=passthroughfs')
     
     fuse_options.add('allow_other')
-    fuse_options.add('uid=1000000')
-    fuse_options.add('gid=1001000')
+    #fuse_options.add('uid=1000000')
+    #fuse_options.add('gid=1001000')
     
     if options.debug_fuse:
         fuse_options.add('debug')
         
         
-    #fuse_options.discard('default_permissions') 
+    fuse_options.discard('default_permissions') 
     pyfuse3.init(operations, options.mountpoint, fuse_options)
 
     try:
