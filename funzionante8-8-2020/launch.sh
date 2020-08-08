@@ -30,7 +30,7 @@ sudo chmod 777 -R /gpio_mnt/
 sudo mkdir -p /gpio_mnt/test2/sys/devices/platform/soc/3f200000.gpio
 sudo mkdir -p /gpio_mnt/test2/sys/class/gpio
 
-sudo mkdir -p /gpio_mnt/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/
+sudo mkdir -p /gpio_mnt/test2/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/
 
 #sudo chown "$MYUID"."$MYGID" -R /gpio_mnt/test2/sys/
 
