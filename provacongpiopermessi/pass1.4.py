@@ -78,7 +78,8 @@ class Operations(pyfuse3.Operations):
         print("relative path ", relative_path)
         self._lookup_cnt[inode] += 1
         
-        listgpio = ["gpio8", "gpio9", "gpio10", "gpio11", "gpio12", "gpio13", "gpio14", "gpio15"]
+        listgpio = ["gpio8", "gpio9", "gpio10", "gpio11", "gpio12", "gpio13", "gpio14", "gpio15", "gpiochip0", "gpiochip504", "export", "unexport"]
+        
         print("la lista di gpio disponibili è: ", listgpio, "\n")
 
         if any(i in relative_path for i in listgpio):
@@ -385,7 +386,7 @@ class Operations(pyfuse3.Operations):
                 
                 
                 
-        listgpio = ["gpio8", "gpio9", "gpio10", "gpio11", "gpio12", "gpio13", "gpio14", "gpio15"]
+        listgpio = ["gpio8", "gpio9", "gpio10", "gpio11", "gpio12", "gpio13", "gpio14", "gpio15", "gpiochip0", "gpiochip504", "export", "unexport"]
         print("la lista di gpio disponibili è: ", listgpio, "\n")
 
         if any(i in relative_path for i in listgpio):
