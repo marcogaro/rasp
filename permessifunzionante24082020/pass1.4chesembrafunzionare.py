@@ -76,7 +76,7 @@ class Operations(pyfuse3.Operations):
 
         listgpio = ["gpiochip0", "gpiochip504", "export", "unexport"]
 
-        for count in range(1, 26):
+        for count in range(1, 27):
             print(count, "gpio" + str(count))
             print(config['gpiotest2']['gpio' + str(count)])
             if config['gpiotest2']['gpio' + str(count)] == 'yes':
@@ -373,7 +373,7 @@ class Operations(pyfuse3.Operations):
 
         print("\n\n\n")
 
-        for count in range(1, 26):
+        for count in range(1, 27):
             print(count, "-gpio" + str(count))
             print(config['gpiotest2']['gpio' + str(count)])
             if config['gpiotest2']['gpio' + str(count)] == 'yes':
