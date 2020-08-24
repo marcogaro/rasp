@@ -66,7 +66,7 @@ sudo chmod -R 777 /gpio_mnt/
 sudo chmod -R 777 /gpio_mnt/test2/sys/
 
 sudo groupadd gpio
-chgrp gpio -R /sys/class/gpio/
+sudo chgrp gpio -R /sys/class/gpio/
 
 sleep 10
 
