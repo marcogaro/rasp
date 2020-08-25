@@ -55,7 +55,7 @@ lxc config device add test2 soc disk source=/sys/devices/platform/soc/soc\:firmw
 
 
 sleep 5
-wget https://raw.githubusercontent.com/marcogaro/rasp/master/provacongpiopermessi/pass1.4.py -P /tmp/passthrough/
+wget https://raw.githubusercontent.com/marcogaro/rasp/master/permessifunzionante24082020/pass1.4chesembrafunzionare.py -P /tmp/passthrough/
 cd /tmp/passthrough/
 
 ls
@@ -70,8 +70,8 @@ sudo chgrp gpio -R /sys/class/gpio/
 
 sleep 10
 
-python3 pass1.4.py /sys/devices/platform/soc/3f200000.gpio /gpio_mnt/test2/sys/devices/platform/soc/3f200000.gpio/ &
-python3 pass1.4.py /sys/class/gpio/ /gpio_mnt/test2/sys/class/gpio/ &
+python3 pass1.4chesembrafunzionare.py /sys/devices/platform/soc/3f200000.gpio /gpio_mnt/test2/sys/devices/platform/soc/3f200000.gpio/ &
+python3 pass1.4chesembrafunzionare.py /sys/class/gpio/ /gpio_mnt/test2/sys/class/gpio/ &
 
 
 
