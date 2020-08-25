@@ -83,7 +83,7 @@ lxc config device add "$nome" soc disk source=/sys/devices/platform/soc/soc\:fir
 
 sleep 5
 wget https://raw.githubusercontent.com/marcogaro/rasp/master/permessifunzionante24082020/pass1.4chesembrafunzionare.py -P /tmp/passthrough/
-cd /tmp/passthrough/
+#cd /tmp/passthrough/
 
 ls
 
