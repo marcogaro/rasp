@@ -78,13 +78,13 @@ class Operations(pyfuse3.Operations):
 
         for count in range(1, 27):
             print(count, "gpio" + str(count))
-            print(config['gpiotest1']['gpio' + str(count)])
-            if config['gpiotest1']['gpio' + str(count)] == 'yes':
+            print(config['gpiotest4']['gpio' + str(count)])
+            if config['gpiotest4']['gpio' + str(count)] == 'yes':
                 print("ok")
                 listgpio.append("gpio" + str(count))
             print("\n")
 
-        print("la lista di gpio disponibili per test1 è: ", listgpio, "\n")
+        print("la lista di gpio disponibili per test4 è: ", listgpio, "\n")
 
         if any(i in relative_path for i in listgpio):
             print(relative_path, "trovato\n")
@@ -375,14 +375,14 @@ class Operations(pyfuse3.Operations):
 
         for count in range(1, 27):
             print(count, "-gpio" + str(count))
-            print(config['gpiotest1']['gpio' + str(count)])
-            if config['gpiotest1']['gpio' + str(count)] == 'yes':
+            print(config['gpiotest4']['gpio' + str(count)])
+            if config['gpiotest4']['gpio' + str(count)] == 'yes':
                 print("ok2")
                 listgpio.append("gpio" + str(count))
             print("\n")
 
         print("\n")
-        print("listagpio2 utilizzabile per test1: ", listgpio)
+        print("listagpio2 utilizzabile per test4: ", listgpio)
 
         if any(i in relative_path for i in listgpio):
             print(relative_path, "trovato\n")
