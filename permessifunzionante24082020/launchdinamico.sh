@@ -9,19 +9,27 @@ read -r b
    if [ "$b" == "test1" ]
    	then
      	nome="test1"
+	pass="passt2.0.test1.py"
      	echo "$nome"
+	echo "$pass"
    elif [ "$b" == 'test2' ]
 	then
 	nome="test2"
+	pass="passt2.0.test2.py"
      	echo $nome
+	echo "$pass"
    elif [ "$b" == 'test3' ]
 	then
 	nome="test3"
+	pass="passt2.0.test3.py"
      	echo "$nome" 
+	echo "$pass"
    elif [ "$b" == 'test4' ]
 	then
 	nome="test4"
+	pass="passt2.0.test4.py"
      	echo $nome
+	echo "$pass"
    else
    	echo "errore" 
    	exit
@@ -29,6 +37,7 @@ read -r b
    
    
    echo $nome
+   echo "$pass"
    
    
    
@@ -97,8 +106,8 @@ sudo chgrp gpio -R /sys/class/gpio/
 
 sleep 10
 
-python3 pass1.4chesembrafunzionare.py /sys/devices/platform/soc/3f200000.gpio /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio/ &
-python3 pass1.4chesembrafunzionare.py /sys/class/gpio/ /gpio_mnt/"$nome"/sys/class/gpio/ &
+python3 "$pass" /sys/devices/platform/soc/3f200000.gpio /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio/ &
+python3 "$pass" /sys/class/gpio/ /gpio_mnt/"$nome"/sys/class/gpio/ &
 
 
 
