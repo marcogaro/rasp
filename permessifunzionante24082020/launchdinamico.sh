@@ -62,7 +62,7 @@ MYGID=$(($MYUID + `lxc exec "$nome" -- sed -nr "s/^gpio:x:([0-9]+):.*/\1/p" /etc
 echo $MYGID $MYUID
 
 sudo mkdir -p /gpio_mnt/"$nome"
-sudo chmod 777 -R /gpio_mnt/
+sudo chmod 777 -R /gpio_mnt/"$nome"
 sudo mkdir -p /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio
 sudo mkdir -p /gpio_mnt/"$nome"/sys/class/gpio
 
@@ -78,7 +78,7 @@ lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/devices/platform/soc/soc\:firmware/so
 
 
 
-sudo chmod -R 777 /gpio_mnt/
+sudo chmod -R 777 /gpio_mnt/"$nome"
 
 #lxc config set test2 raw.idmap "both 1000 1000000"
 lxc config set "$nome" security.privileged true
