@@ -92,7 +92,7 @@ class Operations(pyfuse3.Operations):
             print("relative path ", relative_path)
             self._lookup_cnt[inode] += 1
             if any(i in relative_path for i in listgpio):
-                print(relative_path, "trovato\n")
+                print("relpath: ", relative_path , "trovato\n", "path: ", path)
                 print("sono arrivato qui")
                 # With hardlinks, one inode may map to multiple paths.
                 if inode not in self._inode_path_map:
@@ -115,7 +115,7 @@ class Operations(pyfuse3.Operations):
             print("relative path ", relative_path)
             self._lookup_cnt[inode] += 1
             if any(i in relative_path for i in listgpio):
-                print(relative_path, "trovato\n")
+                print("relpath: ", relative_path , "trovato\n", "path: ", path)
                 print("sono arrivato qui")
                 # With hardlinks, one inode may map to multiple paths.
                 if inode not in self._inode_path_map:
