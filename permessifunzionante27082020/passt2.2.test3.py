@@ -78,13 +78,13 @@ class Operations(pyfuse3.Operations):
 
         for count in range(1, 27):
             #print(count, "gpio" + str(count))
-            #print(config['gpiotest3']['gpio' + str(count)])
-            if config['gpiotest3']['gpio' + str(count)] == 'yes':
+            #print(config['gpiotest2']['gpio' + str(count)])
+            if config['gpiotest2']['gpio' + str(count)] == 'yes':
                 print(count, "gpio" + str(count), "ok")
                 listgpio.append("gpio" + str(count))
             print("\n")
 
-        print("la lista di gpio disponibili per test3 è: ", listgpio, "\n")
+        print("la lista di gpio disponibili per test2 è: ", listgpio, "\n")
 
         if path.startswith('/sys/class/gpio/'):
             start = '/sys/class/gpio/'
@@ -92,7 +92,7 @@ class Operations(pyfuse3.Operations):
             print("relative path ", relative_path)
             self._lookup_cnt[inode] += 1
             if any(i in relative_path for i in listgpio):
-                print(relative_path, "trovato\n")
+                print("relpath: ", relative_path , "trovato\n", "path: ", path)
                 print("sono arrivato qui")
                 # With hardlinks, one inode may map to multiple paths.
                 if inode not in self._inode_path_map:
@@ -423,14 +423,14 @@ class Operations(pyfuse3.Operations):
 
         for count in range(1, 27):
             print(count, "-gpio" + str(count))
-            print(config['gpiotest3']['gpio' + str(count)])
-            if config['gpiotest3']['gpio' + str(count)] == 'yes':
+            print(config['gpiotest2']['gpio' + str(count)])
+            if config['gpiotest2']['gpio' + str(count)] == 'yes':
                 print("ok2")
                 listgpio.append("gpio" + str(count))
             print("\n")
 
         print("\n")
-        print("listagpio2 utilizzabile per test3: ", listgpio)
+        print("listagpio2 utilizzabile per test2: ", listgpio)
 
 
 
