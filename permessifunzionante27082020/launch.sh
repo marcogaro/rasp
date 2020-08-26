@@ -9,25 +9,25 @@ read -r b
    if [ "$b" == "test1" ]
    	then
      	nome="test1"
-	pass="passt2.0.test1.py"
+	pass="passt2.2.test1.py"
      	echo "$nome"
 	echo "$pass"
    elif [ "$b" == 'test2' ]
 	then
 	nome="test2"
-	pass="passt2.0.test2.py"
+	pass="passt2.2.test2.py"
      	echo $nome
 	echo "$pass"
    elif [ "$b" == 'test3' ]
 	then
 	nome="test3"
-	pass="passt2.0.test3.py"
+	pass="passt2.2.test3.py"
      	echo "$nome" 
 	echo "$pass"
    elif [ "$b" == 'test4' ]
 	then
 	nome="test4"
-	pass="passt2.0.test4.py"
+	pass="passt2.2.test4.py"
      	echo $nome
 	echo "$pass"
    else
