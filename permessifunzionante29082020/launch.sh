@@ -2,6 +2,8 @@
 
 echo "scegli tra test1 test2 test3 test4: "
 
+file=passt2.2
+
 read -r b
 #echo $b
 
@@ -9,25 +11,25 @@ read -r b
    if [ "$b" == "test1" ]
    	then
      	nome="test1"
-	pass="passt2.2.test1.py"
+	pass=""$file"."$nome".py"
      	echo "$nome"
 	echo "$pass"
    elif [ "$b" == 'test2' ]
 	then
 	nome="test2"
-	pass="passt2.2.test2.py"
+	pass=""$file".""$nome"".py"
      	echo $nome
 	echo "$pass"
    elif [ "$b" == 'test3' ]
 	then
 	nome="test3"
-	pass="passt2.2.test3.py"
+	pass=""$file"."$nome".py"
      	echo "$nome" 
 	echo "$pass"
    elif [ "$b" == 'test4' ]
 	then
 	nome="test4"
-	pass="passt2.2.test4.py"
+	pass=""$file"."$nome".py"
      	echo $nome
 	echo "$pass"
    else
