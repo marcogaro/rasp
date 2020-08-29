@@ -600,7 +600,7 @@ def main():
     	if config['gpiotest1']['gpio' + str(count)] == 'yes':
     		print("ok2")
     		listgpio.append("gpio" + str(count))
-    	        print("\n")
+		print("\n")
 
 	print("\n")
 	print("listagpio2 utilizzabile per test1: ", listgpio)
