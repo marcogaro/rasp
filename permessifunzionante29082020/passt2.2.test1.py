@@ -62,14 +62,30 @@ class Operations(pyfuse3.Operations):
 
     def _add_path(self, inode, path):
         log.debug('_add_path for %d, %s', inode, path)
-        print("path: ", path)
+        print("add-path: ", path)
         #start = "/sys/class/gpio/"
         #print("start: ", start)
         #relative_path = os.path.relpath(path, start)
         #print("relative path ", relative_path)
 
 
-       
+        config = configparser.ConfigParser()
+        config.sections()
+        config.read('example.ini')
+        config.sections()
+
+        listgpio = ["gpiochip0", "gpiochip504", "export", "unexport"]
+
+        for count in range(1, 27):
+            #print(count, "gpio" + str(count))
+            #print(config['gpiotest1']['gpio' + str(count)])
+            if config['gpiotest1']['gpio' + str(count)] == 'yes':
+                print(count, "gpio" + str(count), "ok")
+                listgpio.append("gpio" + str(count))
+            print("\n")
+
+        print("la lista di gpio disponibili per test1 è: ", listgpio, "\n")
+
         if path.startswith('/sys/class/gpio/'):
             start = '/sys/class/gpio/'
             relative_path = os.path.relpath(path, start)
@@ -228,6 +244,7 @@ class Operations(pyfuse3.Operations):
         name = fsdecode(name)
         parent = self._inode_to_path(inode_p)
         path = os.path.join(parent, name)
+	print("unlink-path: ", path)
         try:
             inode = os.lstat(path).st_ino
             os.unlink(path)
@@ -241,6 +258,7 @@ class Operations(pyfuse3.Operations):
         name = fsdecode(name)
         parent = self._inode_to_path(inode_p)
         path = os.path.join(parent, name)
+	print("rmdir-path: ", path)
         try:
             inode = os.lstat(path).st_ino
             os.rmdir(path)
@@ -250,7 +268,7 @@ class Operations(pyfuse3.Operations):
             self._forget_path(inode, path)
 
     def _forget_path(self, inode, path):
-        print("\nforgetpath\n\n")
+        print("\nforgetpath: ", path)
         log.debug('forget %s for %d', path, inode)
         val = self._inode_path_map[inode]
         if isinstance(val, set):
@@ -265,6 +283,7 @@ class Operations(pyfuse3.Operations):
         target = fsdecode(target)
         parent = self._inode_to_path(inode_p)
         path = os.path.join(parent, name)
+	print("symlink-path: ", path)
         try:
             os.symlink(target, path)
             os.chown(path, ctx.uid, ctx.gid, follow_symlinks=False)
@@ -306,6 +325,7 @@ class Operations(pyfuse3.Operations):
         new_name = fsdecode(new_name)
         parent = self._inode_to_path(new_inode_p)
         path = os.path.join(parent, new_name)
+	print("link-path: ", path)
         try:
             os.link(self._inode_to_path(inode), path, follow_symlinks=False)
         except OSError as exc:
@@ -376,7 +396,7 @@ class Operations(pyfuse3.Operations):
 
     async def mknod(self, inode_p, name, mode, rdev, ctx):
         path = os.path.join(self._inode_to_path(inode_p), fsdecode(name))
-        print("mknod-path: ", path)
+	print("mknod-path: ", path)
         try:
             os.mknod(path, mode=(mode & ~ctx.umask), device=rdev)
             os.chown(path, ctx.uid, ctx.gid)
@@ -390,14 +410,34 @@ class Operations(pyfuse3.Operations):
 
     async def mkdir(self, inode_p, name, mode, ctx):
         path = os.path.join(self._inode_to_path(inode_p), fsdecode(name))
-        print("path-mkdir: ", path)
+        print("path mkdir: ", path)
 
         start = "/sys/class/gpio/"
         print("start: ", start)
         relative_path = os.path.relpath(path, start)
         print("relative path ", relative_path)
 
-        
+        config = configparser.ConfigParser()
+        config.sections()
+        config.read('example.ini')
+        config.sections()
+
+        listgpio = ['gpiochip0', 'gpiochip504']
+
+        print("\n\n\n")
+
+        for count in range(1, 27):
+            print(count, "-gpio" + str(count))
+            print(config['gpiotest1']['gpio' + str(count)])
+            if config['gpiotest1']['gpio' + str(count)] == 'yes':
+                print("ok2")
+                listgpio.append("gpio" + str(count))
+            print("\n")
+
+        print("\n")
+        print("listagpio2 utilizzabile per test1: ", listgpio)
+
+
 
 
         if path.startswith('/sys/class/gpio/'):
@@ -504,7 +544,7 @@ class Operations(pyfuse3.Operations):
 
     async def create(self, inode_p, name, mode, flags, ctx):
         path = os.path.join(self._inode_to_path(inode_p), fsdecode(name))
-        print("create-path: ", path)
+	print("create-path: ", path)
         try:
             fd = os.open(path, flags | os.O_CREAT | os.O_TRUNC)
         except OSError as exc:
@@ -581,36 +621,9 @@ def main():
     fuse_options.add('fsname=passthroughfs')
 
     fuse_options.add('allow_other')
-    
-    
-    
-    #da qui creo la listgpio
-    
-    config = configparser.ConfigParser()
-    config.sections()
-    config.read('example.ini')
-    config.sections()
+    # fuse_options.add('uid=1000000')
+    # fuse_options.add('gid=1001000')
 
-    listgpio = ['gpiochip0', 'gpiochip504']
-    print("\n\n\n")
-
-    for count in range(1, 27):
-    	print(count, "-gpio" + str(count))
-    	print(config['gpiotest1']['gpio' + str(count)])
-    	if config['gpiotest1']['gpio' + str(count)] == 'yes':
-    		print("ok2")
-    		listgpio.append("gpio" + str(count))
-		print("\n")
-
-	print("\n")
-	print("listagpio2 utilizzabile per test1: ", listgpio)
-        
-        
-        
-        
-    
-    
-  
     if options.debug_fuse:
         fuse_options.add('debug')
 
