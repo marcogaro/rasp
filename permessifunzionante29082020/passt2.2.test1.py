@@ -244,7 +244,7 @@ class Operations(pyfuse3.Operations):
         name = fsdecode(name)
         parent = self._inode_to_path(inode_p)
         path = os.path.join(parent, name)
-	print("unlink-path: ", path)
+        print("unlink-path: ", path)
         try:
             inode = os.lstat(path).st_ino
             os.unlink(path)
@@ -258,7 +258,7 @@ class Operations(pyfuse3.Operations):
         name = fsdecode(name)
         parent = self._inode_to_path(inode_p)
         path = os.path.join(parent, name)
-	print("rmdir-path: ", path)
+        print("rmdir-path: ", path)
         try:
             inode = os.lstat(path).st_ino
             os.rmdir(path)
@@ -283,7 +283,7 @@ class Operations(pyfuse3.Operations):
         target = fsdecode(target)
         parent = self._inode_to_path(inode_p)
         path = os.path.join(parent, name)
-	print("symlink-path: ", path)
+        print("symlink-path: ", path)
         try:
             os.symlink(target, path)
             os.chown(path, ctx.uid, ctx.gid, follow_symlinks=False)
@@ -325,7 +325,7 @@ class Operations(pyfuse3.Operations):
         new_name = fsdecode(new_name)
         parent = self._inode_to_path(new_inode_p)
         path = os.path.join(parent, new_name)
-	print("link-path: ", path)
+        print("link-path: ", path)
         try:
             os.link(self._inode_to_path(inode), path, follow_symlinks=False)
         except OSError as exc:
@@ -396,7 +396,7 @@ class Operations(pyfuse3.Operations):
 
     async def mknod(self, inode_p, name, mode, rdev, ctx):
         path = os.path.join(self._inode_to_path(inode_p), fsdecode(name))
-	print("mknod-path: ", path)
+        print("mknod-path: ", path)
         try:
             os.mknod(path, mode=(mode & ~ctx.umask), device=rdev)
             os.chown(path, ctx.uid, ctx.gid)
@@ -544,7 +544,7 @@ class Operations(pyfuse3.Operations):
 
     async def create(self, inode_p, name, mode, flags, ctx):
         path = os.path.join(self._inode_to_path(inode_p), fsdecode(name))
-	print("create-path: ", path)
+        print("create-path: ", path)
         try:
             fd = os.open(path, flags | os.O_CREAT | os.O_TRUNC)
         except OSError as exc:
