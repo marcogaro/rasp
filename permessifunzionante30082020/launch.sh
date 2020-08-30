@@ -66,7 +66,7 @@ lxc delete --force "$nome"
    
    
    
-   
+lxc list   
    
    
 
