@@ -89,7 +89,7 @@ class Operations(pyfuse3.Operations):
         print("la lista di gpio disponibili per test1 è: ", listgpio, "\n")
 
         for nome in listgpio:
-            if path == '/sys/class/gpio/' + nome or path=='/sys/devices/platform/soc/3f200000.gpio/gpio/gpiochip0' or path=='/sys/devices/platform/soc/3f200000.gpio/gpiochip0'  or path=='/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio' or path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/' + nome) :
+            if path == '/sys/class/gpio/' + nome or path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpio') or path=='/sys/devices/platform/soc/3f200000.gpio/gpio/gpiochip0' or path=='/sys/devices/platform/soc/3f200000.gpio/gpiochip0'  or path=='/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio' or path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/' + nome) or path.startswith('/sys/devices/platform/soc/3f200000.gpio/driver') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/driver_override') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/modalias') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/of_node') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/power') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/subsystem') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/uevent') :
                 print("primo if")
                 print("nome: ", nome)
                 print("path: ", path)
