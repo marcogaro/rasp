@@ -62,40 +62,38 @@ class Operations(pyfuse3.Operations):
 
     def _add_path(self, inode, path):
         log.debug('_add_path for %d, %s', inode, path)
-        print("path: ", path)
-        #start = "/sys/class/gpio/"
-        #print("start: ", start)
-        #relative_path = os.path.relpath(path, start)
-        #print("relative path ", relative_path)
+        #print("path: ", path)
 
+        # start = "/sys/class/gpio/"
+        # print("start: ", start)
+        # relative_path = os.path.relpath(path, start)
+        # print("relative path ", relative_path)
 
         config = configparser.ConfigParser()
         config.sections()
         config.read('example.ini')
         config.sections()
 
-        #listgpio = ["gpiochip0", "gpiochip504", "export", "unexport"]
-        listgpio = ["gpiochip0", "gpiochip504", "export"]  
-      
+        # listgpio = ["gpiochip0", "gpiochip504", "export", "unexport"]
+        listgpio = ["gpiochip0", "gpiochip504", "export"]
+
         for count in range(1, 27):
-            #print(count, "gpio" + str(count))
-            #print(config['gpiotest4']['gpio' + str(count)])
+            # print(count, "gpio" + str(count))
+            # print(config['gpiotest4']['gpio' + str(count)])
             if config['gpiotest4']['gpio' + str(count)] == 'yes':
-                print(count, "gpio" + str(count), "ok")
+
+                #print(count, "gpio" + str(count), "ok")
                 listgpio.append("gpio" + str(count))
             print("\n")
 
         print("la lista di gpio disponibili per test4 è: ", listgpio, "\n")
 
-        if path.startswith('/sys/class/gpio/'):
-            start = '/sys/class/gpio/'
-            relative_path = os.path.relpath(path, start)
-            print("relative path ", relative_path)
-            self._lookup_cnt[inode] += 1
-            if relative_path in listgpio:
-                print("relpath: ", relative_path , "trovato\n", "path: ", path)
-                print("sono arrivato qui")
-                # With hardlinks, one inode may map to multiple paths.
+        for nome in listgpio:
+            if path == '/sys/class/gpio/' + nome or path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpio') or path=='/sys/devices/platform/soc/3f200000.gpio/gpio/gpiochip0' or path=='/sys/devices/platform/soc/3f200000.gpio/gpiochip0'  or path=='/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio' or path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/' + nome) or path.startswith('/sys/devices/platform/soc/3f200000.gpio/driver') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/driver_override') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/modalias') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/of_node') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/power') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/subsystem') or path.startswith('/sys/devices/platform/soc/3f200000.gpio/uevent') :
+                print("primo if")
+                print("nome: ", nome)
+                print("path: ", path)
+                print('/sys/class/gpio/' + nome)
                 if inode not in self._inode_path_map:
                     self._inode_path_map[inode] = path
                     return
@@ -105,20 +103,14 @@ class Operations(pyfuse3.Operations):
                     val.add(path)
                 elif val != path:
                     self._inode_path_map[inode] = {path, val}
-            else:
-                print("non in lista\n")
-                print("questo gpio non puoi usarlo, puoi utilizzare dall'8 al 15!")
-                return
+                print("fine if\n\n")
 
-        elif path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/'):
-            start = '/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/'
-            relative_path = os.path.relpath(path, start)
-            print("relative path ", relative_path)
-            self._lookup_cnt[inode] += 1
-            if relative_path in listgpio:
-                print("relpath: ", relative_path , "trovato\n", "path: ", path)
-                print("sono arrivato qui")
-                # With hardlinks, one inode may map to multiple paths.
+            else:
+                print("altro caso")
+
+            '''
+            elif path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/'):
+                print("primo elif\n\n")
                 if inode not in self._inode_path_map:
                     self._inode_path_map[inode] = path
                     return
@@ -128,25 +120,7 @@ class Operations(pyfuse3.Operations):
                     val.add(path)
                 elif val != path:
                     self._inode_path_map[inode] = {path, val}
-            else:
-                print("non in lista\n")
-                print("questo gpio non puoi usarlo, puoi utilizzare dall'8 al 15!")
-                return
-
-        else:
-            self._lookup_cnt[inode] += 1
-            print("caso non analizzato path:\n\n\n", path)
-            if inode not in self._inode_path_map:
-                self._inode_path_map[inode] = path
-                return
-
-            val = self._inode_path_map[inode]
-            if isinstance(val, set):
-                val.add(path)
-            elif val != path:
-                self._inode_path_map[inode] = {path, val}
-
-
+            '''
 
 
 
@@ -433,9 +407,6 @@ class Operations(pyfuse3.Operations):
         print("\n")
         print("listagpio2 utilizzabile per test4: ", listgpio)
 
-
-
-
         if path.startswith('/sys/class/gpio/'):
             start = '/sys/class/gpio/'
             relative_path = os.path.relpath(path, start)
@@ -486,29 +457,6 @@ class Operations(pyfuse3.Operations):
             attr = self._getattr(path=path)
             self._add_path(attr.st_ino, path)
             return attr
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     async def statfs(self, ctx):
         root = self._inode_path_map[pyfuse3.ROOT_INODE]
