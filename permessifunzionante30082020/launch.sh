@@ -43,12 +43,34 @@ read -r b
    
    
    
+   #distruggo container nel caso fosse già attivo
+   
+   echo "Destroying virtual rasp "$nome"!"
+
+sudo umount /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio
+sudo umount /gpio_mnt/"$nome"/sys/class/gpio
+sudo umount /gpio_mnt/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/
+sudo umount --force /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio
+sudo umount --force /gpio_mnt/"$nome"/sys/class/gpio
+
+sudo umount --force /gpio_mnt/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/
+
+lxc config device remove "$nome" gpio disk 
+lxc config device remove "$nome" devices disk
+lxc config device remove "$nome" soc disk
+
+sudo rm -rf /gpio_mnt/"$nome"
+sudo rm -rf /gpio_mnt/
+sudo rm -rf /tmp/passthrough/
+lxc delete --force "$nome"
+   
    
    
    
    
    
 
+#da qui creo container
 
 echo "Creating virtual rasp "$nome"!"
 
