@@ -42,33 +42,7 @@ read -r b
    echo "$pass"
    
    
-   
-   #distruggo container nel caso fosse già attivo
-   
-   echo "Destroying virtual rasp "$nome"!"
-
-sudo umount /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio
-sudo umount /gpio_mnt/"$nome"/sys/class/gpio
-#sudo umount /gpio_mnt/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/
-sudo umount --force /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio
-sudo umount --force /gpio_mnt/"$nome"/sys/class/gpio
-
-#sudo umount --force /gpio_mnt/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/
-
-lxc config device remove "$nome" gpio disk 
-lxc config device remove "$nome" devices disk
-lxc config device remove "$nome" soc disk
-
-sudo rm -rf /gpio_mnt/"$nome"
-#sudo rm -rf /gpio_mnt/
-sudo rm -rf /tmp/passthrough/
-lxc delete --force "$nome"
-   
-   
-   
-lxc list   
-   
-   
+     
 
 #da qui creo container
 
@@ -104,6 +78,9 @@ lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/firmware/devicetree/base/soc/gpio@7e2
 lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/bus/gpio/
 
 
+
+
+
 sudo chmod -R 777 /gpio_mnt/"$nome"
 
 #lxc config set test2 raw.idmap "both 1000 1000000"
@@ -118,8 +95,6 @@ lxc config device add "$nome" soc disk source=/sys/devices/platform/soc/soc\:fir
 lxc config device add "$nome" firmware disk source=/sys/firmware/devicetree/base/soc/gpio@7e200000/ path=/gpio_mnt/sys/firmware/devicetree/base/soc/gpio@7e200000/
 
 lxc config device add "$nome" bus disk source=/sys/bus/gpio/ path=/gpio_mnt/sys/bus/gpio/
-
-
 
 
 sleep 5
