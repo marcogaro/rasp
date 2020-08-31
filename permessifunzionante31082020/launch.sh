@@ -92,9 +92,9 @@ lxc config device add "$nome" devices disk source=/gpio_mnt/"$nome"/sys/devices/
 
 lxc config device add "$nome" soc disk source=/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/ path=/gpio_mnt/sys/devices/platform/soc/soc\:firmware/soc\:firmware\:expgpio/gpio/gpiochip504/
 
-lxc config device add "$nome" firmware disk source=/sys/firmware/devicetree/base/soc/gpio@7e200000/ path=/gpio_mnt/sys/firmware/devicetree/base/soc/gpio@7e200000/
+#lxc config device add "$nome" firmware disk source=/sys/firmware/devicetree/base/soc/gpio@7e200000/ path=/gpio_mnt/sys/firmware/devicetree/base/soc/gpio@7e200000/
 
-lxc config device add "$nome" bus disk source=/sys/bus/gpio/ path=/gpio_mnt/sys/bus/gpio/
+#lxc config device add "$nome" bus disk source=/sys/bus/gpio/ path=/gpio_mnt/sys/bus/gpio/
 
 
 sleep 5
