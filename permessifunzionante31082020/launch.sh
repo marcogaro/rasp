@@ -113,7 +113,9 @@ lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/devices/platform/soc/soc\:firmware/so
 lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/firmware/devicetree/base/soc/gpio@7e200000/
 
 lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/bus/gpio/
-
+#######################################
+lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/bus/platform/drivers/
+lxc exec "$nome" -- mkdir -p /gpio_mnt/sys/bus/platform/
 
 
 
