@@ -31,6 +31,8 @@ sudo umount --force /gpio_mnt/sys/devices/platform/soc/soc\:firmware/soc\:firmwa
 lxc config device remove "$nome" gpio disk 
 lxc config device remove "$nome" devices disk
 lxc config device remove "$nome" soc disk
+lxc config device remove "$nome" firmware disk
+lxc config device remove "$nome" bus disk
 
 sudo rm -rf /gpio_mnt/"$nome"
 sudo rm -rf /gpio_mnt/
