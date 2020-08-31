@@ -142,7 +142,8 @@ ls
 
 sudo chmod -R 777 /sys/class/gpio/
 sudo chmod -R 777 /sys/devices/platform/soc/
-sudo chmod -R 777 /gpio_mnt/
+#sudo chmod -R 777 /gpio_mnt/
+sudo chmod -R 777 /gpio_mnt/"$nome"
 sudo chmod -R 777 /gpio_mnt/"$nome"/sys/
 
 sudo groupadd gpio
