@@ -35,6 +35,6 @@ lxc config device remove "$nome" firmware disk
 lxc config device remove "$nome" bus disk
 
 sudo rm -rf /gpio_mnt/"$nome"
-sudo rm -rf /gpio_mnt/
+#sudo rm -rf /gpio_mnt/
 sudo rm -rf /tmp/passthrough/
 lxc delete --force "$nome"
