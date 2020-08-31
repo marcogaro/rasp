@@ -60,7 +60,7 @@ lxc config device remove "$nome" devices disk
 lxc config device remove "$nome" soc disk
 
 sudo rm -rf /gpio_mnt/"$nome"
-sudo rm -rf /gpio_mnt/
+#sudo rm -rf /gpio_mnt/
 sudo rm -rf /tmp/passthrough/
 lxc delete --force "$nome"
    
