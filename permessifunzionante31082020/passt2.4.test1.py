@@ -75,8 +75,8 @@ class Operations(pyfuse3.Operations):
         config.read('example.ini')
         config.sections()
 
-        # listgpio = ["gpiochip0", "gpiochip504", "export", "unexport"]
-        listgpio = ["gpiochip0", "gpiochip504", "export"]
+        # listgpio = ["gpiochip0", "gpiochip504", "export"]
+        listgpio = ["gpiochip0", "gpiochip504", "export", "unexport"]
 
         for count in range(1, 27):
             # print(count, "gpio" + str(count))
