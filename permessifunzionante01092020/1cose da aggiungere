@@ -8,6 +8,6 @@ questo è il main; provare a calcolare la listgpio direttamente lì senza calcol
 os.path.exists('./file.txt')    
 verificare se /gpio_mnt/sys/class/gpio/... esiste e in quel caso permettere l'unexport
 
---> 2.6 controlla se esiste prima di unexport
+--> 2.6 controlla se esiste prima di unexport e export (funzionante)
 
 
