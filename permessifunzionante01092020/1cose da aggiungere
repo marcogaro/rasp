@@ -1,0 +1,11 @@
+if __name__== "__main__":
+   main()
+questo è il main; provare a calcolare la listgpio direttamente lì senza calcolarla ogni volta nelle funzioni
+
+
+
+
+os.path.exists('./file.txt')    
+verificare se /gpio_mnt/sys/class/gpio/... esiste e in quel caso permettere l'unexport
+
+
