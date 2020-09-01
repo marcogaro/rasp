@@ -508,7 +508,7 @@ class Operations(pyfuse3.Operations):
         ff = int(f)
         print("provaint: ", ff)
 
-
+        gpio = str(ff)
         listgpio = listgpio2
         print("la lista di gpio disponibili per test2 è: ", listgpio, "\n")
 
@@ -517,7 +517,9 @@ class Operations(pyfuse3.Operations):
 
         if export[0] == 1 and unexport[0] == 0:
             print("1export")
-            if ff in listgpio:
+
+            print(os.path.exists('/sys/class/gpio/gpio'+gpio+'/'))
+            if ff in listgpio and not os.path.exists('/sys/class/gpio/gpio'+gpio+'/') :
                 os.lseek(fd, offset, os.SEEK_SET)
                 return os.write(fd, buf)
             else:
@@ -529,9 +531,9 @@ class Operations(pyfuse3.Operations):
                 return 1
         elif export[0] == 0 and unexport[0] == 1:
             print("1unexport")
-            print('/sys/class/gpio/gpio11/')
-            print(os.path.exists('/sys/class/gpio/gpio11/'))
-            if ff in listgpio and os.path.exists('/sys/class/gpio/gpio11/') :
+            print('/sys/class/gpio/gpio'+f+'/')
+            print(os.path.exists('/sys/class/gpio/gpio'+gpio+'/'))
+            if ff in listgpio and os.path.exists('/sys/class/gpio/gpio'+gpio+'/') :
                 os.lseek(fd, offset, os.SEEK_SET)
                 return os.write(fd, buf)
             else:
