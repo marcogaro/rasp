@@ -1,7 +1,7 @@
 if __name__== "__main__":
    main()
 questo è il main; provare a calcolare la listgpio direttamente lì senza calcolarla ogni volta nelle funzioni
-
+-->introdotto nella versione 2.5
 
 
 
