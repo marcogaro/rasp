@@ -52,7 +52,7 @@ with open('example.py', 'r') as file:
 #print(data)
 
 
-f = open('passt2.7.'+nome+'.txt', "w")
+f = open('passt2.7.'+nome+'.py', "w")
 f.write(data)
 f.close()
 
