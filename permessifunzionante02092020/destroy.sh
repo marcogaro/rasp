@@ -12,6 +12,8 @@
 #read name
 
 
+pass=passt2.7
+
 
 echo "qual è il nome della raspberry da eliminare? "
 read -r nome
@@ -20,7 +22,7 @@ read -r nome
 
 echo "Destroying virtual rasp "$nome"!"
 
-sudo rm -rf passt2.7.$nome.py
+sudo rm -rf $pass.$nome.py
 
 
 sudo umount /gpio_mnt/"$nome"/sys/devices/platform/soc/3f200000.gpio
