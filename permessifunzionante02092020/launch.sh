@@ -43,10 +43,10 @@ read -r b
    
    
 
-
+sudo rm -rf $file.$nome.py
 
 #creo passt
-sed 's/test2/'$nome'/g' example.py > passt2.7.$nome.py
+sed 's/test2/'$nome'/g' example.py > $file.$nome.py
 
 
 
