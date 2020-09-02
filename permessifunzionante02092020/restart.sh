@@ -11,7 +11,7 @@
 #echo nome della raspberry?
 #read name
 
-file=passt2.4
+file=passt2.7
 
 
 echo "qual è il nome della raspberry per cui riavviare il filesystem? "
