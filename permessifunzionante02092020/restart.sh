@@ -14,8 +14,18 @@
 file=passt2.7
 
 
+
+
 echo "qual è il nome della raspberry per cui riavviare il filesystem? "
 read -r nome
+
+
+
+sudo rm -rf $file.$nome.py
+
+#creo passt
+sed 's/test2/'$nome'/g' example.py > $file.$nome.py
+
 
 
 pass=""$file"."$nome".py"
