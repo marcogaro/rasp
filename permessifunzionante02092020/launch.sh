@@ -46,15 +46,7 @@ read -r b
 
 
 #creo passt
-
-with open('example.py', 'r') as file:
-    data = file.read().replace('test2', nome)
-#print(data)
-
-
-f = open('passt2.7.'+nome+'.py', "w")
-f.write(data)
-f.close()
+sed 's/test2/'$nome'/g' example.py > passt2.7.$nome.py
 
 
 
