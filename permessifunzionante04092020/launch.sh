@@ -94,14 +94,14 @@ echo "Creating virtual rasp "$nome"!"
 
 lxc launch ubuntu:16.04 "$nome"
 
-MYUID=`sudo ls -l /home/ubuntu/storage/containers/"$nome"/rootfs/ | grep root | awk '{}{print $3}{}'`
+#MYUID=`sudo ls -l /home/ubuntu/storage/containers/"$nome"/rootfs/ | grep root | awk '{}{print $3}{}'`
 
 lxc exec "$nome" -- addgroup gpio
 sleep 20
 lxc exec "$nome" -- usermod -a -G gpio ubuntu
 sleep 1
-MYGID=$(($MYUID + `lxc exec "$nome" -- sed -nr "s/^gpio:x:([0-9]+):.*/\1/p" /etc/group`))
-echo $MYGID $MYUID
+#MYGID=$(($MYUID + `lxc exec "$nome" -- sed -nr "s/^gpio:x:([0-9]+):.*/\1/p" /etc/group`))
+#echo $MYGID $MYUID
 
 sudo mkdir -p /gpio_mnt/"$nome"
 sudo chmod 777 -R /gpio_mnt/"$nome"
@@ -143,8 +143,8 @@ lxc config device add "$nome" soc disk source=/sys/devices/platform/soc/soc\:fir
 #lxc config device add "$nome" bus disk source=/sys/bus/gpio/ path=/gpio_mnt/sys/bus/gpio/
 
 
-sleep 5
-wget https://raw.githubusercontent.com/marcogaro/rasp/master/permessifunzionante24082020/pass1.4chesembrafunzionare.py -P /tmp/passthrough/
+sleep 2
+#wget https://raw.githubusercontent.com/marcogaro/rasp/master/permessifunzionante24082020/pass1.4chesembrafunzionare.py -P /tmp/passthrough/
 #cd /tmp/passthrough/
 
 ls
