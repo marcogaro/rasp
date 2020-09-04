@@ -23,11 +23,11 @@ ninja
 sudo python3 -m pytest test/
 
 #reinstallo
-cd build
-sudo ldconfig
-meson ..
-ninja
-sudo python3 -m pytest test/
+#cd build
+#sudo ldconfig
+#meson ..
+#ninja
+#sudo python3 -m pytest test/
 
 
 
@@ -57,6 +57,8 @@ sudo apt update
 sudo apt install snapd
 sudo snap install lxd 
 lxd --version
+
+sudo ldconfig
 
 
 #comandi utili snap lxd
