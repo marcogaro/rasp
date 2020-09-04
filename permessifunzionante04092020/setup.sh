@@ -122,4 +122,4 @@ EOF
 
 
 
-echo "Setup completed. Please, reboot and then launch 'sudo lxd init'."
+echo "Setup completed. Please, reboot and then launch 'sudo lxd init' and 'allow other users'."
