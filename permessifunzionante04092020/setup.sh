@@ -61,6 +61,12 @@ lxd --version
 sudo ldconfig
 
 
+
+sudo groupadd gpio
+sudo chgrp gpio -R /sys/class/gpio/
+sudo chmod 777 -R /sys/class/gpio/
+
+
 #comandi utili snap lxd
 #sudo apt update
 #sudo apt install snapd
