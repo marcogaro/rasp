@@ -61,6 +61,9 @@ lxd --version
 sudo ldconfig
 
 
+#sudo groupadd gpio
+#sudo chgrp gpio -R /sys/class/gpio/
+#sudo chmod 777 -R /sys/class/gpio/
 
 
 
@@ -116,12 +119,6 @@ fi \\
 '", SYMLINK+="serial%c"
 EOF
 
-
-
-
-sudo groupadd gpio
-sudo chgrp gpio -R /sys/class/gpio/
-sudo chmod 777 -R /sys/class/gpio/
 
 
 
