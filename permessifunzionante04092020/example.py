@@ -125,19 +125,7 @@ class Operations(pyfuse3.Operations):
             else:
                 print("altro caso")
 
-            '''
-            elif path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/'):
-                print("primo elif\n\n")
-                if inode not in self._inode_path_map:
-                    self._inode_path_map[inode] = path
-                    return
-
-                val = self._inode_path_map[inode]
-                if isinstance(val, set):
-                    val.add(path)
-                elif val != path:
-                    self._inode_path_map[inode] = {path, val}
-            '''
+            
 
     async def forget(self, inode_list):
         for (inode, nlookup) in inode_list:
