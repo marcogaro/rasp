@@ -35,9 +35,14 @@ mkdir /tmp/passthrough/
 
 wget https://raw.githubusercontent.com/libfuse/pyfuse3/master/examples/passthroughfs.py -P /tmp/passthrough/
 
-sudo add-apt-repository -y ppa:ubuntu-lxc/lxd-stable
-sudo apt-get update
-sudo apt-get install -y lxd lxd-tools criu cgmanager
+#sudo add-apt-repository -y ppa:ubuntu-lxc/lxd-stable
+#sudo apt-get update
+#sudo apt-get install -y lxd lxd-tools criu cgmanager
+#lxd --version
+
+sudo apt update
+sudo apt install snapd
+sudo snap install lxd 
 lxd --version
 
 
