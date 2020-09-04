@@ -50,9 +50,9 @@ sed 's/test2/'$nome'/g' example.py > $file.$nome.py
 
 
 #aggiorno i permessi
-sudo groupadd gpio
-sudo chgrp gpio -R /sys/class/gpio/
-sudo chmod 777 -R /sys/class/gpio/
+#sudo groupadd gpio
+#sudo chgrp gpio -R /sys/class/gpio/
+#sudo chmod 777 -R /sys/class/gpio/
 
 
 
