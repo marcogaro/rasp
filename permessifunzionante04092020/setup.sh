@@ -22,6 +22,16 @@ meson ..
 ninja
 sudo python3 -m pytest test/
 
+#reinstallo
+cd build
+sudo ldconfig
+meson ..
+ninja
+sudo python3 -m pytest test/
+
+
+
+
 sudo ninja install
 
 
@@ -40,10 +50,30 @@ wget https://raw.githubusercontent.com/libfuse/pyfuse3/master/examples/passthrou
 #sudo apt-get install -y lxd lxd-tools criu cgmanager
 #lxd --version
 
+
+
+
 sudo apt update
 sudo apt install snapd
 sudo snap install lxd 
 lxd --version
+
+
+#comandi utili snap lxd
+#sudo apt update
+#sudo apt install snapd
+#sudo snap install lxd 
+
+#opzionali
+#snap list
+#snap enable lxd
+#fine opzionali
+
+#lxd init
+#snap remove --purge lxd
+
+#fine comandi utili snap lxd
+
 
 
 addgroup gpio
