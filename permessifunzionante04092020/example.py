@@ -547,16 +547,7 @@ class Operations(pyfuse3.Operations):
 
 
 
-        '''
-        if gpioint in listgpio:
-            os.lseek(fd, offset, os.SEEK_SET)
-            return os.write(fd, buf)
-        else:
-            print("errore")
-            os.lseek(fd, offset, os.SEEK_SET)
-            return 1
-        '''
-
+       
 
 
     async def release(self, fd):
