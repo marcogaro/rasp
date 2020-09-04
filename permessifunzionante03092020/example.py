@@ -532,7 +532,7 @@ class Operations(pyfuse3.Operations):
                 return 1
         elif export[0] == 0 and unexport[0] == 1:
             print("1unexport")
-            print('/sys/class/gpio/gpio'+f+'/')
+            print('/sys/class/gpio/gpio'+gpio+'/')
             print(os.path.exists('/sys/class/gpio/gpio'+gpio+'/'))
             if gpioint in listgpio and os.path.exists('/sys/class/gpio/gpio'+gpio+'/') :
                 os.lseek(fd, offset, os.SEEK_SET)
