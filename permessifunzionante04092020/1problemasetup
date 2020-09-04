@@ -1,0 +1,5 @@
+provare a riavviare dopo il setup e dopo aver fatto ls -lha /sys/class/gpio/
+se non funziona dare uno dei 3 comandi e riavviare uno alla volta:
+#sudo groupadd gpio
+#sudo chgrp gpio -R /sys/class/gpio/
+#sudo chmod 777 -R /sys/class/gpio/
