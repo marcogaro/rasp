@@ -506,7 +506,7 @@ class Operations(pyfuse3.Operations):
         print("write\n buf: ", buf, "fd: ", fd)
         gpio = buf.decode()
         print("prova: ", gpio)
-        gpioint = int(f)
+        gpioint = int(gpio)
         print("provaint: ", gpioint)
 
         # ff=gpioint
