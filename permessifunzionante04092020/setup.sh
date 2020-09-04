@@ -62,9 +62,7 @@ sudo ldconfig
 
 
 
-sudo groupadd gpio
-sudo chgrp gpio -R /sys/class/gpio/
-sudo chmod 777 -R /sys/class/gpio/
+
 
 
 #comandi utili snap lxd
@@ -117,5 +115,14 @@ exit 1; \\
 fi \\
 '", SYMLINK+="serial%c"
 EOF
+
+
+
+
+sudo groupadd gpio
+sudo chgrp gpio -R /sys/class/gpio/
+sudo chmod 777 -R /sys/class/gpio/
+
+
 
 echo "Setup completed. Please, reboot and then launch 'sudo lxd init'."
