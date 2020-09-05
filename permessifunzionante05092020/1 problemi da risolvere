@@ -1,0 +1,3 @@
+2.8 ha un problema: echo outqualcosa > /gpio_mnt/... fa crashare il sistema, dovremmo verificare se il valore è in o out per direction, 0 o 1 per value. Ma con i caratteri corretti la 2.8 già funziona perfettamente
+
+con la 2.9 inserire la verifica
