@@ -85,8 +85,9 @@ sudo ldconfig
 
 
 
-addgroup gpio
-usermod -a -G gpio ubuntu
+sudo addgroup gpio
+sudo usermod -a -G gpio ubuntu
+
 cat<<EOF | sudo tee /etc/udev/rules.d/99-gpio.rules
 SUBSYSTEM=="input", GROUP="input", MODE="0660"
 SUBSYSTEM=="i2c-dev", GROUP="i2c", MODE="0660"
