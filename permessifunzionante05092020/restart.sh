@@ -11,7 +11,7 @@
 #echo nome della raspberry?
 #read name
 
-file=passt2.7
+file=passt2.8
 
 
 
