@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
---> versione 2.7
+--> versione 2.8
 
 passthroughfs.py - Example file system for pyfuse3
 This file system mirrors the contents of a specified directory tree.
