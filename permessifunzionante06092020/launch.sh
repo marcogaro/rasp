@@ -2,7 +2,7 @@
 
 echo "scegli tra test1 test2 test3 test4: "
 
-file=passt2.8
+file=passt3.0
 
 read -r b
 #echo $b
