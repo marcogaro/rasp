@@ -12,7 +12,7 @@
 #read name
 
 
-pass=passt2.8
+pass=passt3.0
 
 
 echo "qual è il nome della raspberry da eliminare? "
