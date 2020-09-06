@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
---> versione 3.1
+--> versione 3.0
 
 passthroughfs.py - Example file system for pyfuse3
 This file system mirrors the contents of a specified directory tree.
@@ -108,10 +108,10 @@ class Operations(pyfuse3.Operations):
                     unexport.clear()
                     unexport.insert(0, 0)
 
-
-                #controllo se direction
-                #if path == '/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/'+nome+'/direction':
-                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith('/direction'):
+                # controllo se direction
+                # if path == '/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/'+nome+'/direction':
+                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith(
+                        '/direction'):
                     print("caso direction2")
                     direction.clear()
                     direction.insert(0, 1)
@@ -120,8 +120,9 @@ class Operations(pyfuse3.Operations):
                     direction.insert(0, 0)
 
                 # controllo se value
-                #if path == '/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/gpio1/value':
-                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith('/value'):
+                # if path == '/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/gpio1/value':
+                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith(
+                        '/value'):
                     print("caso value2")
                     value.clear()
                     value.insert(0, 1)
@@ -129,8 +130,9 @@ class Operations(pyfuse3.Operations):
                     value.clear()
                     value.insert(0, 0)
 
-                #controllo se activelow
-                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith('/active_low'):
+                # controllo se activelow
+                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith(
+                        '/active_low'):
                     print("caso active2")
                     active.clear()
                     active.insert(0, 1)
@@ -138,17 +140,15 @@ class Operations(pyfuse3.Operations):
                     active.clear()
                     active.insert(0, 0)
 
-                #controllo se edge
-                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith('/edge'):
+                # controllo se edge
+                if path.startswith('/sys/devices/platform/soc/3f200000.gpio/gpiochip0/gpio/') and path.endswith(
+                        '/edge'):
                     print("caso edge2")
                     edge.clear()
                     edge.insert(0, 1)
                 else:
                     edge.clear()
                     edge.insert(0, 0)
-
-
-
 
                 if inode not in self._inode_path_map:
                     self._inode_path_map[inode] = path
@@ -584,12 +584,12 @@ class Operations(pyfuse3.Operations):
             print("1non dovrebbe capitare: echo direction value\n")
             print("buff:", buf)
             print("buf decodificato:", gpiobyte)
-            gpiobyte=gpiobyte.strip('\n')
+            gpiobyte = gpiobyte.strip('\n')
             print("buf decodificato senzsa\\n:", gpiobyte)
 
             if direction[0] == 1:
                 print("caso direction:")
-                if gpiobyte == 'in' or gpiobyte == 'out' :
+                if gpiobyte == 'in' or gpiobyte == 'out':
                     os.lseek(fd, offset, os.SEEK_SET)
                     return os.write(fd, buf)
                 else:
@@ -614,9 +614,15 @@ class Operations(pyfuse3.Operations):
                     print("errore")
                     os.lseek(fd, offset, os.SEEK_SET)
                     return 1
+
+            else:
+                print("errore2")
+                os.lseek(fd, offset, os.SEEK_SET)
+                return 1
+
             '''
             non funzionante perchè bisogna vedere quali parametri accetta, high e low non vanno bene
-            
+
             elif edge[0] == 1:
                 print("caso edge:")
                 if gpiobyte == '0' or gpiobyte == '1':
@@ -627,12 +633,6 @@ class Operations(pyfuse3.Operations):
                     os.lseek(fd, offset, os.SEEK_SET)
                     return 1
             '''
-            else:
-                print("errore2")
-                os.lseek(fd, offset, os.SEEK_SET)
-                return 1
-
-
 
     async def release(self, fd):
         if self._fd_open_count[fd] > 1:
