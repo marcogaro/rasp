@@ -1,3 +1,5 @@
 nella 3.1 implementare activelow e edge
 
 --> 3.1 è stato implementato activelow e parzialmente edge ma non so quali parametri accetti (high e low non funzionano)
+
+nella 3.2 dovrei controllare se direction è 'out' prima di aggiornare 'value'
