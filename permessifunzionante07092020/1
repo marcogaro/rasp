@@ -2,3 +2,5 @@ la 3.2 risolve il problema di value se la direction non è impostata in out
 
 nella 3.3 vorrei che una volta constatato che la direzione è in il valore value che nel container viene comunque modificato venisse riportato alla condizione precedente.
 Stessa cosa se la direction la metto a 'out3' 
+
+--> nella 3.3 ho risolto facendo un riavvio con riavvio.sh per aggiornare i file presenti sul container
