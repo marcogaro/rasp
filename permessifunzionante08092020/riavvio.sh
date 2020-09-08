@@ -11,7 +11,7 @@ nome=$1
 echo nome della raspberry: $nome
 #read name
 
-file=passt3.2
+file=passt3.3
 
 
 
