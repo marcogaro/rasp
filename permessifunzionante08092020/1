@@ -1,1 +1,3 @@
 con la 3.3 uso il riavvio.sh per aggiornare i file direction e value che altrimenti rimarrebbero non sincronizzati tra filesystem e raspberry fisica
+
+-->3.4 non utilizzo più il ciclo for ma if e controllo se dentro il path è presente un nome gpio*
