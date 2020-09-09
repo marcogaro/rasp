@@ -127,7 +127,7 @@ class Operations(pyfuse3.Operations):
 
 
 
-        x = re.search("gpio\d{1,3}", path)
+        x = re.search("gpio\d{1,2}", path)
         print(x)  # this will print an object
         if x:
             print("\npath:", path)
